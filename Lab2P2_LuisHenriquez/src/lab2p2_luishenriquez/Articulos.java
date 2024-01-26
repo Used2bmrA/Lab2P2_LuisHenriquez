@@ -1,5 +1,6 @@
 package lab2p2_luishenriquez;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Articulos {
@@ -20,9 +21,11 @@ public class Articulos {
         this.fecha = fecha;
         this.accesoEnLinea = accesoEnLinea;
     }
+    
+    SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public String toString() {
-        return "Articulo: " + "título: " + titulo + ", autor: " + autor + ", tema: " + tema + ", fecha: " + fecha + ", accesoEnLinea: " + accesoEnLinea;
+        return "Articulo: " + "título: " + titulo + ", autor: " + autor + ", tema: " + tema + ", fecha: " + sd.format(fecha) + ", acceso en linea: " + accesoEnLinea;
     }
 }

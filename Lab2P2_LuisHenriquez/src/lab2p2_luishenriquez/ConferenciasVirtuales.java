@@ -1,5 +1,6 @@
 package lab2p2_luishenriquez;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ConferenciasVirtuales {
@@ -20,9 +21,10 @@ public class ConferenciasVirtuales {
         this.duracion = duracion;
         this.enlaceDeAcceso = enlaceDeAcceso;
     }
+    SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public String toString() {
-        return "Conferencia virtual: " + "título: " + titulo + ", conferencista: " + conferencista + ", fecha: " + fecha + ", duracion: " + duracion + ", enlaced de acceso: " + enlaceDeAcceso;
+        return "Conferencia virtual: " + "título: " + titulo + ", conferencista: " + conferencista + ", fecha: " + sd.format(fecha) + ", duracion: " + duracion + ", enlaced de acceso: " + enlaceDeAcceso;
     }
 }

@@ -150,9 +150,14 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                 case 4:
                     if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
                         System.out.println("No tiene acceso a esta función.");
-                        
                         break;
                     }
+                    
+                    System.out.println("¿Qué recurso desea editar?");
+                    ListarArreglo(recursos);
+                    int elegido = sc.nextInt() - 1;
+                    sc.nextLine();
+                    
                     
                                         
                     break;
@@ -183,7 +188,7 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             String genero = sc.nextLine();
             System.out.println("¿En qué año se publicó el libro?");
             String anoPublicacion = sc.nextLine();
-            Libro nuevoLibro = new Libro(titulo, autor, genero, anoPublicacion);
+            Libro nuevoLibro = new Libro(titulo, autor, genero, anoPublicacion, true);
             recursos.add(nuevoLibro);
             
         }else if(tipo.equals("Articulos")){
@@ -231,7 +236,7 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             String titulo = sc.nextLine();
             System.out.println("¿Quién fue el conferencista?");
             String conferencista = sc.nextLine();
-            System.out.println("¿En qué fecha se llevó a cabo la conferencia?");
+            System.out.println("¿En qué fecha se llevó a cabo la conferencia? (dd/mm/yyyy)");
             String ingreso = sc.nextLine();
             String[] x = ingreso.split("/");
             int[] t = new int[3];
