@@ -12,6 +12,9 @@ public class Usuario {
         this.contrasena = contrasena;
         this.tipo = tipo;
     }
+
+    public Usuario() {
+    }
     
         public String getTipo() {
         return tipo;
@@ -23,6 +26,11 @@ public class Usuario {
 
     public String getContrasena() {
         return contrasena;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + ", Tipo: " + tipo;
     }
         
         

@@ -19,10 +19,29 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
         
         System.out.println("Bienvenido a mi laboratorio.");
         int op = 0;
+        String contraUsuario = "";
+        String contraIngresada = "1";
+        Usuario usuarioActual = new Usuario();
         
         do {
-            System.out.println("Ingrese su nombre de usuario:");
-            String nombreUsuario = sc.nextLine();
+            while (!contraUsuario.equals(contraIngresada)) {
+                System.out.println("Elija su usuario:");
+                ListarArreglo(usuarios);
+                int seleccion = sc.nextInt() - 1;
+                sc.nextLine();
+                contraUsuario = ((Usuario) usuarios.get(seleccion)).getContrasena();
+
+                System.out.println("Ingrese su contraseña:");
+                contraIngresada = sc.nextLine();
+
+                if (!contraUsuario.equals(contraIngresada)) {
+                    System.out.println("Contraseña invalida. Vuelva a intentar.\n");
+                }
+
+                usuarioActual = (Usuario) usuarios.get(seleccion);
+            }
+
+            
             
             System.out.println("¿Qué desea realizar?\n"
                     + "1. Listar recursos \n"
@@ -34,16 +53,28 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             sc.nextLine();
             switch (op) {
                 case 1:
-                    ListarRecursos();
+                    ListarArreglo(recursos);
                     break;
                 case 2:
+                    if (usuarioActual.getTipo().equals("estudiante")) {
+                        System.out.println("No tiene acceso a esta función.");
+                    }
                     
                     
                     break;
                 case 3:
+                    if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
+                        System.out.println("No tiene acceso a esta función.");
+                        break;
+                    }
+                    
                     
                     break;
                 case 4:
+                    if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
+                        System.out.println("No tiene acceso a esta función.");
+                        break;
+                    }
                     
                     break;
                 case 5:
@@ -55,10 +86,10 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
         } while (op != 5);
     }
 
-    private static void ListarRecursos() {
+    private static void ListarArreglo(ArrayList lista) {
         String impresion = "";
-        for (int i = 0; i < recursos.size(); i++) {
-            impresion += (i + 1) + ". " + recursos.get(i) + ".\n";
+        for (int i = 0; i < lista.size(); i++) {
+            impresion += (i + 1) + ". " + lista.get(i).toString() + ".\n";
         }
         System.out.println(impresion);
     }
