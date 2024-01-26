@@ -150,8 +150,8 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                 case 4:
                     if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
                         System.out.println("No tiene acceso a esta función.");
-                        break;
                         
+                        break;
                     }
                     
                                         
