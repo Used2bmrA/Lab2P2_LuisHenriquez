@@ -157,7 +157,137 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                     ListarArreglo(recursos);
                     int elegido = sc.nextInt() - 1;
                     sc.nextLine();
+                    System.out.println("¿Qué elemento desea modificar?");
+                    int choice2;
                     
+                    if (recursos.get(elegido) instanceof Libro) {
+                        System.out.println("1. Título\n"
+                                + "2. Autor\n"
+                                + "3. Género\n"
+                                + "4. Año de publicación \n"
+                                + "5. Disponibilidad");
+                        choice2 = sc.nextInt();
+                        sc.nextLine();
+                        switch (choice2) {
+                            case 1:
+                                System.out.println("¿Cuál es el nuevo título?");
+                                String tituloNuevo = sc.nextLine();
+                                ((Libro) recursos.get(elegido)).setTitulo(tituloNuevo);
+                                break;
+                            case 2:
+                                System.out.println("¿Cuál es el nuevo autor?");
+                                String autorNuevo = sc.nextLine();
+                                ((Libro) recursos.get(elegido)).setAutor(autorNuevo);
+                                break;
+                            case 3:
+                                System.out.println("¿Cuál es el nuevo género?");
+                                String generoNuevo = sc.nextLine();
+                                ((Libro) recursos.get(elegido)).setGenero(generoNuevo);
+                                break;
+                            case 4:
+                                System.out.println("¿Cuál es el nuevo año de publicación?");
+                                String anoNuevo = sc.nextLine();
+                                ((Libro) recursos.get(elegido)).setAnoPublicacion(anoNuevo);
+                                break;
+                            case 5:
+                                System.out.println("Se ha cambiado la disponibilidad.");
+                                if (((Libro) recursos.get(elegido)).isDisponible()) {
+                                    ((Libro) recursos.get(elegido)).setDisponible(false);
+                                }else{
+                                    ((Libro) recursos.get(elegido)).setDisponible(true);
+                                }
+                                
+                                break;
+                            default:
+                                System.out.println("Opción invalida, intente otra vez.");
+                        }
+                    }else if (recursos.get(elegido) instanceof Articulos){
+                        System.out.println("1. Título\n"
+                                + "2. Autor\n"
+                                + "3. Tema\n"
+                                + "4. Fecha\n"
+                                + "5. Acceso en linea");
+                        choice2 = sc.nextInt();
+                        sc.nextLine();
+                        switch (choice2) {
+                            case 1:
+                                System.out.println("¿Cuál es el nuevo título?");
+                                String tituloNuevo = sc.nextLine();
+                                ((Articulos) recursos.get(elegido)).setTitulo(tituloNuevo);
+                                break;
+                            case 2:
+                                System.out.println("¿Cuál es el nuevo autor?");
+                                String autorNuevo = sc.nextLine();
+                                ((Articulos) recursos.get(elegido)).setAutor(autorNuevo);
+                                break;
+                            case 3:
+                                System.out.println("¿Cuál es el nuevo tema?");
+                                String temaNuevo = sc.nextLine();
+                                ((Articulos) recursos.get(elegido)).setTema(temaNuevo);
+                                break;
+                            case 4:
+                                System.out.println("¿Cuál es la nueva fecha? (dd/mm/yyyy)");
+                                String x = sc.nextLine();
+                                String[] y = x.split("/");
+                                int[] t = new int[3];
+                                for (int i = 0; i < y.length -1; i++) {
+                                    t[i] = Integer.parseInt(y[i]);
+                                }
+                                Date fechaNueva = new Date(t[2], t[1], t[0]);
+                                ((Articulos) recursos.get(elegido)).setFecha(fechaNueva);
+                                break;
+                            case 5:
+                                System.out.println("Se ha cambiado el acceso en linea.");
+                                if (((Articulos) recursos.get(elegido)).isAccesoEnLinea()) {
+                                    ((Articulos) recursos.get(elegido)).setAccesoEnLinea(false);
+                                }else{
+                                    ((Articulos) recursos.get(elegido)).setAccesoEnLinea(true);
+                                }
+                                
+                                break;
+                            default:
+                                System.out.println("Opción invalida, intente otra vez.");
+                        }
+                    }else if(recursos.get(elegido) instanceof CursosEnLinea){
+                        System.out.println("1. Título\n"
+                                + "2. Instructor\n"
+                                + "3. Duración en semanas\n"
+                                + "4. Plataforma de enseñanza");
+                        choice2 = sc.nextInt();
+                        sc.nextLine();
+                        switch (choice2) {
+                            case 1:
+                                System.out.println("¿Cuál es el nuevo título?");
+                                String tituloNuevo = sc.nextLine();
+                                ((CursosEnLinea) recursos.get(elegido)).setTitulo(tituloNuevo);
+                                break;
+                            case 2:
+                                System.out.println("¿Quién es el nuevo instructor?");
+                                String instructorNuevo = sc.nextLine();
+                                ((CursosEnLinea) recursos.get(elegido)).setInstructor(instructorNuevo);
+                                break;
+                            case 3:
+                                System.out.println("¿Cuál es la nueva duración?");
+                                int duracionNueva = sc.nextInt();
+                                sc.nextLine();
+                                ((CursosEnLinea) recursos.get(elegido)).setDuracionSemanas(duracionNueva);
+                                break;
+                            case 4:
+                                System.out.println("¿Cuál es la nueva plataforma?");
+                                String plataformaNueva = sc.nextLine();
+                                ((CursosEnLinea) recursos.get(elegido)).setPlataformaDeEnsenanza(plataformaNueva);
+                                break;
+                            default:
+                                System.out.println("Opción invalida, intente otra vez.");
+                        }
+
+                    }else{
+                        System.out.println("1. Título\n"
+                                + "2. Conferencista\n"
+                                + "3. Fecha\n"
+                                + "4. Duración\n"
+                                + "5. Enlace de acceso");
+                    }
                     
                                         
                     break;

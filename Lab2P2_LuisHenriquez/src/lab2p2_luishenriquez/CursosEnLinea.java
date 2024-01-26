@@ -17,6 +17,22 @@ public class CursosEnLinea {
         this.plataformaDeEnsenanza = plataformaDeEnsenanza;
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
+
+    public void setDuracionSemanas(int duracionSemanas) {
+        this.duracionSemanas = duracionSemanas;
+    }
+
+    public void setPlataformaDeEnsenanza(String plataformaDeEnsenanza) {
+        this.plataformaDeEnsenanza = plataformaDeEnsenanza;
+    }
+
     @Override
     public String toString() {
         return "Curso en linea: " + "título: " + titulo + ", instructor: " + instructor + ", duracion en semanas: " + duracionSemanas + ", plataforma de ensenanza: " + plataformaDeEnsenanza;

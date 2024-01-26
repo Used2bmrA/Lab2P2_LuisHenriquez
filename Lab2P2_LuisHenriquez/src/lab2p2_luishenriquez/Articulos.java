@@ -21,6 +21,34 @@ public class Articulos {
         this.fecha = fecha;
         this.accesoEnLinea = accesoEnLinea;
     }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setAccesoEnLinea(boolean accesoEnLinea) {
+        this.accesoEnLinea = accesoEnLinea;
+    }
+
+    public void setSd(SimpleDateFormat sd) {
+        this.sd = sd;
+    }
+
+    public boolean isAccesoEnLinea() {
+        return accesoEnLinea;
+    }
     
     SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
 
