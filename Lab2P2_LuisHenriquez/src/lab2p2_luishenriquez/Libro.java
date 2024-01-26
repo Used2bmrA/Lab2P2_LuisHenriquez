@@ -15,6 +15,15 @@ public class Libro {
         this.genero = genero;
         this.anoPublicacion = anoPublicacion;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro: " + "título: " + titulo + ", autor: " + autor + ", género: " + genero + ", año de publicacion: " + anoPublicacion + ", disponible: " + disponible;
+    }
     
     
 }

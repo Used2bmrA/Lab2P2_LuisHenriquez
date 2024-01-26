@@ -1,6 +1,7 @@
 package lab2p2_luishenriquez;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Lab2P2_LuisHenriquez {
@@ -98,14 +99,6 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                         System.out.println("No tiene acceso a esta función.");
                         break;
                     }
-                    
-                    
-                    break;
-                case 4:
-                    if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
-                        System.out.println("No tiene acceso a esta función.");
-                        break;
-                    }
                     System.out.println("¿Cómo desea buscar?\n"
                             + "1. Por nombre\n"
                             + "2. Por índice");
@@ -151,7 +144,16 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                         default:
                             System.out.println("Opción invalida, intente otra vez.");
                     }
+
                     
+                    break;
+                case 4:
+                    if (usuarioActual.getTipo().equals("estudiante") || usuarioActual.getTipo().equals("profesor")) {
+                        System.out.println("No tiene acceso a esta función.");
+                        break;
+                    }
+                    
+                                        
                     break;
                 case 5:
                     System.out.println("Adiós.");
@@ -182,12 +184,67 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             String anoPublicacion = sc.nextLine();
             Libro nuevoLibro = new Libro(titulo, autor, genero, anoPublicacion);
             recursos.add(nuevoLibro);
+            
         }else if(tipo.equals("Articulos")){
+            System.out.println("¿Cuál es el título del libro?");
+            String titulo = sc.nextLine();
+            System.out.println("¿Quién es el autor?");
+            String autor = sc.nextLine();
+            System.out.println("¿Cuál es el tema del artículo?");
+            String tema = sc.nextLine();
+            System.out.println("¿En qué fecha se publicó el artículo? (dd/mm/yyyy)");
+            String ingreso = sc.nextLine();
+            String[] x = ingreso.split("/");
+            int[] t = new int[3];
+            for (int i = 0; i < x.length - 1; i++) {
+                t[i] = Integer.parseInt(x[i]);
+            }
+            Date fecha = new Date(t[2] - 1900, t[1], t[0]);
+            System.out.println("¿El artículo está disponible en linea? (1. Sí, 2. No)");
+            int acceso = sc.nextInt();
+            sc.nextLine();
+            boolean accesoEnLinea;
+            if (acceso == 1) {
+                accesoEnLinea = true;
+            }else{
+                accesoEnLinea = false;
+            }
+            Articulos nuevoArticulo = new Articulos(titulo, autor, tema, fecha, accesoEnLinea);
+            recursos.add(nuevoArticulo);
             
         }else if(tipo.equals("Cursos en linea")){
+            System.out.println("¿Cuál es el título del curso?");
+            String titulo = sc.nextLine();
+            System.out.println("¿Quién es el instructor del curso?");
+            String instructor = sc.nextLine();
+            System.out.println("¿Cuál es la duración del curso en semanas?");
+            int duracion = sc.nextInt();
+            sc.nextLine();
+            System.out.println("¿En qué plataforma se impartió el curso?");
+            String plataforma = sc.nextLine();
+            CursosEnLinea nuevoCursoEnLinea = new CursosEnLinea(titulo, instructor, duracion, plataforma);
+            recursos.add(nuevoCursoEnLinea);
             
         }else if(tipo.equals("Conferencias virtuales")){
-            
+            System.out.println("¿Cuál es el título de la conferencia?");
+            String titulo = sc.nextLine();
+            System.out.println("¿Quién fue el conferencista?");
+            String conferencista = sc.nextLine();
+            System.out.println("¿En qué fecha se llevó a cabo la conferencia?");
+            String ingreso = sc.nextLine();
+            String[] x = ingreso.split("/");
+            int[] t = new int[3];
+            for (int i = 0; i < x.length - 1; i++) {
+                t[i] = Integer.parseInt(x[i]);
+            }
+            Date fecha = new Date(t[2] - 1900, t[1], t[0]);
+            System.out.println("¿Qué duración tuvo la conferencia?");
+            int duracion = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Ingrese el enlace de la conferencia:");
+            String enlace = sc.nextLine();
+            ConferenciasVirtuales nuevaConferencia = new ConferenciasVirtuales(titulo, conferencista, fecha, duracion, enlace);
+            recursos.add(nuevaConferencia);
         }
         
     }
