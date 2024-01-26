@@ -72,19 +72,19 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                     
                     switch (choice) {
                         case 1:
-                            AgregarRecurso("Libros");
+                            AgregarRecurso("Libros", recursos);
                             System.out.println("Libro agregado exitosamente.");
                             break;
                         case 2:
-                            AgregarRecurso("Articulos");
+                            AgregarRecurso("Articulos", recursos);
                             System.out.println("Articulo agregado exitosamente.");
                             break;
                         case 3:
-                            AgregarRecurso("Cursos en linea");
+                            AgregarRecurso("Cursos en linea", recursos);
                             System.out.println("Curso en linea agregado exitosamente.");
                             break;
                         case 4:
-                            AgregarRecurso("Conferencias virtuales");
+                            AgregarRecurso("Conferencias virtuales", recursos);
                             System.out.println("Conferencia virtual agregado exitosamente.");
                             break;
                         default:
@@ -106,6 +106,51 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                         System.out.println("No tiene acceso a esta función.");
                         break;
                     }
+                    System.out.println("¿Cómo desea buscar?\n"
+                            + "1. Por nombre\n"
+                            + "2. Por índice");
+                    int seleccionUsuario = sc.nextInt();
+                    sc.nextLine();
+                    
+                    switch (seleccionUsuario) {
+                        case 1:
+                            System.out.println("¿Qué tipo de recurso está buscando?\n"
+                                    + "1. Libros\n"
+                                    + "2. Articulos\n"
+                                    + "3. Cursos en linea\n"
+                                    + "4. Conferencias virtuales");
+                            int tipo = sc.nextInt();
+                            sc.nextLine();
+                            switch (tipo) {
+                                case 1:
+                                    EliminarRecurso("Libros", recursos);
+                                    break;
+                                case 2:
+                                    EliminarRecurso("Articulos", recursos);
+                                    break;
+                                case 3:
+                                    EliminarRecurso("Cursos en linea", recursos);
+                                    break;
+                                case 4:
+                                    EliminarRecurso("Conferencias virtuales", recursos);
+                                    break;
+                                default:
+                                    System.out.println("Opción invalida, intente otra vez.");
+                            }
+                            
+                            break;
+                        case 2:
+                            System.out.println("¿Qué recurso desea eliminar?");
+                            ListarArreglo(recursos);
+                            int eliminar = sc.nextInt() - 1;
+                            sc.nextLine();
+                            recursos.remove(eliminar);
+                            
+
+                            break;
+                        default:
+                            System.out.println("Opción invalida, intente otra vez.");
+                    }
                     
                     break;
                 case 5:
@@ -125,9 +170,18 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
         System.out.println(impresion);
     }
 
-    private static void AgregarRecurso(String tipo) {
+    private static void AgregarRecurso(String tipo, ArrayList lista) {
         if (tipo.equals("Libros")) {
-            
+            System.out.println("¿Cuál es el título del libro?");
+            String titulo = sc.nextLine();
+            System.out.println("¿Quién es el autor?");
+            String autor = sc.nextLine();
+            System.out.println("¿De qué género es el libro?");
+            String genero = sc.nextLine();
+            System.out.println("¿En qué año se publicó el libro?");
+            String anoPublicacion = sc.nextLine();
+            Libro nuevoLibro = new Libro(titulo, autor, genero, anoPublicacion);
+            recursos.add(nuevoLibro);
         }else if(tipo.equals("Articulos")){
             
         }else if(tipo.equals("Cursos en linea")){
@@ -136,6 +190,53 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             
         }
         
+    }
+
+    private static void EliminarRecurso(String tipo, ArrayList lista) {
+        System.out.println("¿Qué título desea eliminar?");
+        String seleccion = sc.nextLine();
+        
+        if (tipo.equals("Libros")) {
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i) instanceof Libro) {
+                    if (((Libro) lista.get(i)).getTitulo().equalsIgnoreCase(seleccion)) {
+                        lista.remove(i);
+                    }
+                }
+            }
+            System.out.println("El libro " + seleccion + " ha sido eliminado.");
+            
+        }else if(tipo.equals("Articulos")){
+            
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i) instanceof Articulos) {
+                    if (((Articulos) lista.get(i)).getTitulo().equalsIgnoreCase(seleccion)) {
+                        lista.remove(i);
+                    }
+                }
+            }
+            System.out.println("El articulo " + seleccion + " ha sido eliminado.");
+            
+        }else if(tipo.equals("Cursos en linea")){
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i) instanceof CursosEnLinea) {
+                    if (((CursosEnLinea) lista.get(i)).getTitulo().equalsIgnoreCase(seleccion)) {
+                        lista.remove(i);
+                    }
+                }
+            }
+            System.out.println("El curso en linea " + seleccion + " ha sido eliminado.");
+            
+        }else if(tipo.equals("Conferencias virtuales")){
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i) instanceof ConferenciasVirtuales) {
+                    if (((ConferenciasVirtuales) lista.get(i)).getTitulo().equalsIgnoreCase(seleccion)) {
+                        lista.remove(i);
+                    }
+                }
+            }
+            System.out.println("La conferencia virtual " + seleccion + " ha sido eliminado.");
+        }
     }
     
 }
