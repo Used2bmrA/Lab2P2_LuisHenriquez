@@ -287,8 +287,46 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                                 + "3. Fecha\n"
                                 + "4. Duración\n"
                                 + "5. Enlace de acceso");
+                        choice2 = sc.nextInt();
+                        sc.nextLine();
+                        switch (choice2) {
+                            case 1:
+                                System.out.println("¿Cuál es el nuevo título?");
+                                String tituloNuevo = sc.nextLine();
+                                ((ConferenciasVirtuales) recursos.get(elegido)).setTitulo(tituloNuevo);
+                                break;
+                            case 2:
+                                System.out.println("¿Quién es el nuevo conferencista?");
+                                String conferencistaNuevo = sc.nextLine();
+                                ((ConferenciasVirtuales) recursos.get(elegido)).setConferencista(conferencistaNuevo);
+                                break;
+                            case 3:
+                                System.out.println("¿Cuál es la nueva fecha? (dd/mm/yyyy)");
+                                String x = sc.nextLine();
+                                String[] y = x.split("/");
+                                int[] t = new int[3];
+                                for (int i = 0; i < y.length -1; i++) {
+                                    t[i] = Integer.parseInt(y[i]);
+                                }
+                                Date fechaNueva = new Date(t[2], t[1], t[0]);
+                                ((ConferenciasVirtuales) recursos.get(elegido)).setFecha(fechaNueva);
+                                break;
+                            case 4:
+                                System.out.println("¿Cuál es la nueva duración?");
+                                int duracionNueva = sc.nextInt();
+                                sc.nextLine();
+                                ((ConferenciasVirtuales) recursos.get(elegido)).setDuracion(duracionNueva);
+                                break;
+                            case 5:
+                                System.out.println("¿Cuál es el nuevo enlace de acceso?");
+                                String accesoNuevo = sc.nextLine();
+                                ((ConferenciasVirtuales) recursos.get(elegido)).setEnlaceDeAcceso(accesoNuevo);
+                                break;
+                            default:
+                                System.out.println("Opción invalida, intente otra vez.");
+                        }
                     }
-                    
+                    System.out.println("Cambio realizado exitosamente.");
                                         
                     break;
                 case 5:
