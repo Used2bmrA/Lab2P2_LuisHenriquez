@@ -48,16 +48,47 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                     + "2. Agregar recursos\n"
                     + "3. Eliminar recursos\n"
                     + "4. Modificar recursos\n"
-                    + "5. Salir\n");
+                    + "5. Salir");
             op = sc.nextInt();
             sc.nextLine();
+            
             switch (op) {
                 case 1:
                     ListarArreglo(recursos);
+                    
                     break;
                 case 2:
                     if (usuarioActual.getTipo().equals("estudiante")) {
                         System.out.println("No tiene acceso a esta función.");
+                    }
+                    
+                    System.out.println("¿Qué recurso desea agregar?\n"
+                            + "1. Libros\n"
+                            + "2. Articulo\n"
+                            + "3. Cursos en linea\n"
+                            + "4. Conferencias virtuales");
+                    int choice = sc.nextInt();
+                    sc.nextLine();
+                    
+                    switch (choice) {
+                        case 1:
+                            AgregarRecurso("Libros");
+                            System.out.println("Libro agregado exitosamente.");
+                            break;
+                        case 2:
+                            AgregarRecurso("Articulos");
+                            System.out.println("Articulo agregado exitosamente.");
+                            break;
+                        case 3:
+                            AgregarRecurso("Cursos en linea");
+                            System.out.println("Curso en linea agregado exitosamente.");
+                            break;
+                        case 4:
+                            AgregarRecurso("Conferencias virtuales");
+                            System.out.println("Conferencia virtual agregado exitosamente.");
+                            break;
+                        default:
+                            System.out.println("Opción invalida. Intente otra vez.");
                     }
                     
                     
@@ -78,7 +109,7 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
                     
                     break;
                 case 5:
-                    
+                    System.out.println("Adiós.");
                     break;
                 default:
                     System.out.println("Opción invalida, intente otra vez.");
@@ -92,6 +123,19 @@ static ArrayList<Usuario> usuarios = new ArrayList<>();
             impresion += (i + 1) + ". " + lista.get(i).toString() + ".\n";
         }
         System.out.println(impresion);
+    }
+
+    private static void AgregarRecurso(String tipo) {
+        if (tipo.equals("Libros")) {
+            
+        }else if(tipo.equals("Articulos")){
+            
+        }else if(tipo.equals("Cursos en linea")){
+            
+        }else if(tipo.equals("Conferencias virtuales")){
+            
+        }
+        
     }
     
 }
